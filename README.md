@@ -6,7 +6,7 @@ Windows 本地 HTML 可视化编辑工具。基于 [deckflow/html-editor](https:
 
 适用于 Windows 10/11 x64，需要可访问 Node.js 下载站和 npm 仓库。无需预装 Node.js，也无需管理员权限。
 
-1. 登录有权访问本私人仓库的 GitHub 账号。
+1. 登录 GitHub 账号。
 2. 点击 **Code > Download ZIP**，把压缩包完整解压到一个固定目录；不要在压缩包内直接运行。
 3. 双击根目录的 `Setup.cmd`。首次运行会下载便携 Node.js、安装锁定的编辑器依赖、应用本地修复，并建立桌面快捷方式和右键菜单。
 4. 通过桌面的 **HTML Editor** 打开工具，或者右键任意 `.html` 文件，选择 **使用 HTML Editor 编辑**。
