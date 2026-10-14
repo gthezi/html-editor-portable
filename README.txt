@@ -47,7 +47,7 @@ the editor package for you (internet required).
 
 For a GitHub checkout or Download ZIP, node\ and app\node_modules\ are not
 included. Setup.cmd downloads them and applies the local fixes automatically.
-See README.md for the private repository download and installation steps.
+See README.md for the public repository download and installation steps.
 
 To remove shortcuts and the context menu on a machine, run "Uninstall.cmd".
 
