@@ -142,6 +142,7 @@ async function startServer(input) {
     stdio: ["ignore", out, out],
     windowsHide: true,
     cwd: TOOL,
+    env: { ...process.env, HTML_EDITOR_PIDFILE: PIDFILE },
   });
   child.unref();
   fs.writeFileSync(PIDFILE, String(child.pid));

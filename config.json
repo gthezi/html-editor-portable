@@ -3,6 +3,5 @@
   "nodeVersion": "v24.21.0",
   "defaultTarget": "workspace",
   "shortcutName": "HTML Editor",
-  "stopShortcutName": "HTML Editor - Stop",
   "contextMenuLabel": "使用 HTML Editor 编辑"
 }

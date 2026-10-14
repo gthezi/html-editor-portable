@@ -12,9 +12,6 @@ not modified by this tool except for the HTML file you actually open and edit.
 Everyday use
 ------------
 Open  : double-click the desktop shortcut "HTML Editor".
-Close : double-click the desktop shortcut "HTML Editor - Stop".
-        (Closing the browser tab does NOT stop the server; that is intentional,
-         so the next double-click opens instantly.)
 
 Inside the editor, click "Open project" to switch to any HTML file or project
 folder on the machine. Editing different projects does not require restarting
@@ -59,7 +56,7 @@ launcher.js   starts/reuses the background server, opens the browser
 stopper.js    stops the background server
 start.vbs     hidden launcher used by the desktop shortcut
 open.vbs      hidden launcher used by the right-click menu (takes a file path)
-stop.vbs      hidden stopper used by the stop shortcut
+stop.vbs      hidden stopper used during uninstall
 message.vbs   small auto-closing notice dialog
 Setup.cmd     one-click setup for a new device
 Uninstall.cmd removes shortcuts + context menu on this device
@@ -74,8 +71,20 @@ Notes / known behavior
 ----------------------
 - The local tweak in scripts\patch-local.js adds windowsHide to the editor's
   native file-picker call so no console window flashes when using "Open project".
+  File and folder dialogs are promoted to the foreground and topmost only while
+  open; no global Windows focus setting is changed.
   It is re-applied automatically by Setup.cmd after any npm install.
 - The same patch script fixes stale element targets after component deletion,
   duplication, or child text edits. Regression tests are in scripts\test-delete-save.mjs.
+- The editor toolbar can generate a self-contained review copy (*.review.html).
+  Recipients can open it in Chrome/Edge without this editor, select text, add
+  comments/highlights/suggestions, and download a *.reviewed.html result.
+  The right annotation panel can be collapsed with its close button or the
+  annotation toggle; drafts and saved comments remain available when reopened.
+  Three selectable colors map consistently to author names and survive export.
+  The active text range stays highlighted while typing in the annotation panel.
+  Existing review files keep their embedded runtime. To upgrade, export pending
+  drafts first, open that result in the editor, then generate a new review copy;
+  saved comments and author colors are preserved while the runtime is replaced.
 - The editor binds to 127.0.0.1 only; nothing is exposed to the network.
 - Settings live in config.json (for example change "port" if 4177 is taken).

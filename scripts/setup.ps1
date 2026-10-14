@@ -12,7 +12,7 @@ $cfg = Get-Content -LiteralPath $cfgPath -Encoding UTF8 -Raw | ConvertFrom-Json
 $nodeVersion = $cfg.nodeVersion
 $label = $cfg.contextMenuLabel
 $shortcutName = $cfg.shortcutName
-$stopShortcutName = $cfg.stopShortcutName
+$stopShortcutName = if ($cfg.stopShortcutName) { $cfg.stopShortcutName } else { 'HTML Editor - Stop' }
 
 $nodeDir = Join-Path $Tool 'node'
 $nodeExe = Join-Path $nodeDir 'node.exe'
@@ -96,8 +96,8 @@ if (-not (Test-Path $welcome)) {
   Ok "Workspace ready"
 }
 
-# 5. Desktop shortcuts -------------------------------------------------------
-Step "Creating desktop shortcuts"
+# 5. Desktop launcher --------------------------------------------------------
+Step "Creating desktop launcher"
 $desktop = [Environment]::GetFolderPath('Desktop')
 $shell = New-Object -ComObject WScript.Shell
 
@@ -112,8 +112,14 @@ function New-Lnk($lnkPath, $vbsName, $description) {
 }
 
 New-Lnk (Join-Path $desktop ($shortcutName + '.lnk')) 'start.vbs' 'Open the local HTML visual editor'
-New-Lnk (Join-Path $desktop ($stopShortcutName + '.lnk')) 'stop.vbs' 'Stop the local HTML editor server'
-Ok "Desktop: $shortcutName.lnk / $stopShortcutName.lnk"
+$legacyStopLink = [IO.Path]::GetFullPath((Join-Path $desktop ($stopShortcutName + '.lnk')))
+if (Test-Path -LiteralPath $legacyStopLink) {
+  $legacy = $shell.CreateShortcut($legacyStopLink)
+  if ($legacy.TargetPath -ieq $wscript -and $legacy.Arguments -ieq ('"' + (Join-Path $Tool 'stop.vbs') + '"')) {
+    Remove-Item -LiteralPath $legacyStopLink -Force
+  }
+}
+Ok "Desktop: $shortcutName.lnk"
 
 # 6. Explorer context menu (does not change the default program) -------------
 Step "Registering Explorer context menu"
