@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Editor</title>
+  <style>
+    :root { --ink:#1f2933; --muted:#52606d; --line:#d9e2ec; --navy:#243b53; --blue:#2166ac; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 56px 24px;
+      background: #f5f7fa; color: var(--ink);
+      font: 16px/1.62 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    .card {
+      max-width: 760px; margin: 0 auto; background: #fff;
+      border: 1px solid var(--line); border-radius: 8px; padding: 36px 40px;
+    }
+    h1 { margin: 0 0 8px; color: var(--navy); font-size: 1.7rem; }
+    .sub { margin: 0 0 28px; color: var(--muted); }
+    h2 { margin: 28px 0 8px; color: var(--navy); font-size: 1.05rem; }
+    ol, ul { margin: 8px 0; padding-left: 22px; }
+    li { margin: 4px 0; }
+    code { background: #eef2f7; padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
+    .note { margin-top: 28px; padding: 14px 16px; border-left: 4px solid var(--blue); background: #f7fafc; color: var(--muted); }
+    a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>HTML Editor</h1>
+    <p class="sub">这是默认起始页。编辑器已经可以正常使用，接下来把你自己页面打开即可。</p>
+
+    <h2>打开你自己的 HTML</h2>
+    <ol>
+      <li>点击窗口右上角的 <strong>Open project</strong>。</li>
+      <li>选择 <strong>HTML file</strong> 打开单个页面，或选择 <strong>Project folder</strong> 打开整个项目目录。</li>
+      <li>打开单个文件时，编辑器会自动把它所在目录设为项目根，从而保留相对路径的图片、CSS、JS。</li>
+    </ol>
+
+    <h2>编辑与保存</h2>
+    <ul>
+      <li>点击文字即可直接修改；拖动元素可以移动位置；选中后可拖手柄调整尺寸。</li>
+      <li>改动会自动保存回原文件（无需手动保存）。</li>
+      <li>每次保存前，编辑器都会在项目目录下的 <code>.local-html-editor/backups/</code> 留一份备份。</li>
+    </ul>
+
+    <h2>关闭</h2>
+    <ul>
+      <li>关掉浏览器标签只会关闭界面，后台服务仍在运行，方便下次秒开。</li>
+      <li>要完全退出，双击桌面上的 <strong>HTML Editor - Stop</strong>。</li>
+    </ul>
+
+    <div class="note">
+      提示：本页只是占位说明，可以随意删改。要打开别的项目时，重复使用 <strong>Open project</strong> 即可，
+      不必重启程序。
+    </div>
+  </div>
+</body>
+</html>

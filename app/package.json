@@ -1,0 +1,9 @@
+{
+  "name": "html-editor-tool",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local wrapper that installs @deckflow/html-editor for double-click use.",
+  "dependencies": {
+    "@deckflow/html-editor": "0.1.8"
+  }
+}
